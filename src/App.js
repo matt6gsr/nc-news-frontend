@@ -4,6 +4,7 @@ import './App.css';
 import Home from './components/Home';
 import TopicNavBar from './components/TopicNavBar';
 import Articles from './components/Articles';
+import Article from './components/Article';
 
 class App extends Component {
   state = {
@@ -23,6 +24,8 @@ class App extends Component {
         <TopicNavBar />
         <Router>
           <Articles path="/" />
+          <Articles path="/topics/:topic_slug" />
+          <Article path="/articles/:articleId" />
         </Router>
       </div>
     );

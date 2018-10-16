@@ -28,11 +28,27 @@ class Articles extends Component {
   }
 
   componentDidMount() {
-    this.getArticles();
+    console.log('mounting...');
+    !this.props.topic_slug ? this.getArticles() : this.getArticlesForTopic();
   }
 
   getArticles() {
     api.getArticles().then(articles => {
+      this.setState({
+        articles
+      });
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('updating...');
+    if (prevProps.topic_slug !== this.props.topic_slug) {
+      !this.props.topic_slug ? this.getArticles() : this.getArticlesForTopic();
+    }
+  }
+
+  getArticlesForTopic() {
+    api.getArticlesForTopic(this.props.topic_slug).then(articles => {
       this.setState({
         articles
       });

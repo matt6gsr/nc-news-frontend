@@ -28,7 +28,8 @@ class Article extends Component {
   }
 
   componentDidMount() {
-    this.getArticle(this.props.match.params.articleId);
+    console.log('mounted....');
+    this.getArticle(this.props.articleId);
   }
 
   getArticle(articleId) {
@@ -39,7 +40,7 @@ class Article extends Component {
     });
   }
   componentDidUpdate() {
-    const id = this.props.match.params._id;
+    const id = this.props._id;
     if (id) {
       this.getArticle(id);
     }
