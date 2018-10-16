@@ -19,14 +19,11 @@ export const getArticle = articleId => {
     .then(({ data }) => data.article);
 };
 
-export const getArticles = () => {
-  return axios.get(`${API_URL}/articles`).then(({ data }) => data);
-};
-
-export const getArticlesForTopic = belongs_to => {
-  return axios
-    .get(`${API_URL}/topics/${belongs_to}/articles`)
-    .then(({ data }) => data.articles);
+export const getArticles = belongs_to => {
+  const url = belongs_to
+    ? `${API_URL}/topics/${belongs_to}/articles`
+    : `${API_URL}/articles`;
+  return axios.get(url).then(({ data }) => data.articles);
 };
 
 export const getUser = username => {
@@ -39,4 +36,8 @@ export const postArticle = (belongs_to, article) => {
   return axios
     .post(`${API_URL}/topics/${belongs_to}/articles`, article)
     .then(({ data }) => data.article);
+};
+
+export const getTopics = () => {
+  return axios.get(`${API_URL}/topics`).then(({ data }) => data.topics);
 };

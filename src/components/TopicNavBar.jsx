@@ -1,18 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
 import TopicNavLink from './TopicNavLink';
+import * as api from '../api';
 
-const TopicNavBar = () => {
-  return (
-    <div>
+class TopicNavBar extends Component {
+  state = {
+    topics: []
+  };
+  render() {
+    return (
       <nav>
-        <TopicNavLink to="/topics/coding/">Coding</TopicNavLink>
-        {' | '}
-        <TopicNavLink to="/topics/football/">Football</TopicNavLink>
-        {' | '}
-        <TopicNavLink to="/topics/cooking/">Cooking</TopicNavLink>
+        {this.state.topics.map(topic => {
+          return (
+            <div key={topic._id}>
+              <TopicNavLink to={`/topics/${topic.slug}`}>
+                {topic.title}
+              </TopicNavLink>
+            </div>
+          );
+        })}
       </nav>
-    </div>
-  );
-};
+    );
+  }
+
+  getTopics() {
+    api.getTopics().then(topics => {
+      this.setState({
+        topics
+      });
+    });
+  }
+
+  componentDidMount() {
+    this.getTopics();
+  }
+}
 
 export default TopicNavBar;

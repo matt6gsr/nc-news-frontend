@@ -29,11 +29,11 @@ class Articles extends Component {
 
   componentDidMount() {
     console.log('mounting...');
-    !this.props.topic_slug ? this.getArticles() : this.getArticlesForTopic();
+    this.getArticles();
   }
 
-  getArticles() {
-    api.getArticles().then(articles => {
+  getArticles(url) {
+    api.getArticles(url).then(articles => {
       this.setState({
         articles
       });
@@ -42,17 +42,10 @@ class Articles extends Component {
 
   componentDidUpdate(prevProps) {
     console.log('updating...');
+    console.log(this.props.topic_slug);
     if (prevProps.topic_slug !== this.props.topic_slug) {
-      !this.props.topic_slug ? this.getArticles() : this.getArticlesForTopic();
+      this.getArticles(this.props.topic_slug);
     }
-  }
-
-  getArticlesForTopic() {
-    api.getArticlesForTopic(this.props.topic_slug).then(articles => {
-      this.setState({
-        articles
-      });
-    });
   }
 }
 

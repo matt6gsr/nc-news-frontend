@@ -16,6 +16,7 @@ class UserPage extends Component {
           Name:
           {this.state.user.name}
         </p>
+        <img src={this.state.user.avatar_url} alt="user avatar" />
       </div>
     );
   }
