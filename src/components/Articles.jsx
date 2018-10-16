@@ -40,7 +40,7 @@ class Articles extends Component {
     });
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     console.log('updating...');
     if (prevProps.topic_slug !== this.props.topic_slug) {
       !this.props.topic_slug ? this.getArticles() : this.getArticlesForTopic();

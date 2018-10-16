@@ -5,6 +5,7 @@ import Home from './components/Home';
 import TopicNavBar from './components/TopicNavBar';
 import Articles from './components/Articles';
 import Article from './components/Article';
+import UserPage from './components/UserPage';
 
 class App extends Component {
   state = {
@@ -26,6 +27,7 @@ class App extends Component {
           <Articles path="/" />
           <Articles path="/topics/:topic_slug" />
           <Article path="/articles/:articleId" />
+          <UserPage path="/users/:username" />
         </Router>
       </div>
     );
