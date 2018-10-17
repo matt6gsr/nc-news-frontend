@@ -6,32 +6,37 @@ import TopicNavBar from './components/TopicNavBar';
 import Articles from './components/Articles';
 import Article from './components/Article';
 import UserPage from './components/UserPage';
+import Login from './components/Login';
+import * as api from './api';
 
 class App extends Component {
   state = {
-    user: {
-      name: 'Jess Jelly',
-      username: 'jessjelly',
-      id: '5b9f6f84588c0f610ccb5ff8',
-      avatar_url:
-        'https://s-media-cache-ak0.pinimg.com/564x/39/62/ec/3962eca164e60cf46f979c1f57d4078b.jpg'
-    },
-    userLoggedIn: true
+    user: {}
   };
   render() {
     return (
       <div className="App">
         <Home />
-        <TopicNavBar />
-        <Router>
-          <Articles path="/" />
-          <Articles path="/topics/:topic_slug" />
-          <Article path="/articles/:articleId" />
-          <UserPage path="/users/:username" />
-        </Router>
+        <Login login={this.login} user={this.state.user}>
+          <TopicNavBar />
+          <Router>
+            <Articles path="/" />
+            <Articles path="/topics/:topic_slug" user={this.state.user} />
+            <Article path="/articles/:articleId" user={this.state.user} />
+            <UserPage path="/users/:username" />
+          </Router>
+        </Login>
       </div>
     );
   }
+
+  login = username => {
+    api.getUser(username).then(user => {
+      this.setState({
+        user
+      });
+    });
+  };
 }
 
 export default App;

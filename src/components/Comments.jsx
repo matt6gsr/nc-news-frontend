@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Votes from './Votes';
 import * as api from '../api';
+import AddComment from './AddComment';
 
 class Comments extends Component {
   state = {
@@ -13,6 +14,7 @@ class Comments extends Component {
           Comments:
           {this.state.comments.length}
         </p>
+        <AddComment addComment={this.addComment} />
         {this.state.comments.map(comment => {
           return (
             <div key={comment._id}>
@@ -37,6 +39,16 @@ class Comments extends Component {
       });
     });
   }
+
+  addComment = body => {
+    api
+      .postComment(this.props.articleId, body, this.props.user._id)
+      .then(comment => {
+        this.setState({
+          comments: [comment, ...this.state.comments]
+        });
+      });
+  };
 }
 
 export default Comments;

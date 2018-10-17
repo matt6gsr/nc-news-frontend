@@ -41,3 +41,9 @@ export const postArticle = (belongs_to, article) => {
 export const getTopics = () => {
   return axios.get(`${API_URL}/topics`).then(({ data }) => data.topics);
 };
+
+export const postComment = (id, body, created_by) => {
+  return axios
+    .post(`${API_URL}/articles/${id}/comments`, { body, created_by })
+    .then(({ data }) => data.comment);
+};
