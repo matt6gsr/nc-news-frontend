@@ -10,27 +10,31 @@ class Comments extends Component {
   };
   render() {
     return (
-      <div>
-        <p>
-          Comments:
-          {this.state.comments.length}
-        </p>
+      <div className="comments-wrapper">
         <AddComment addComment={this.addComment} />
-        {this.state.comments.map(comment => {
-          return (
-            <div key={comment._id}>
-              <div>
-                {comment.created_by.name} commented on this article on{' '}
-                {dateFormat(
-                  comment.created_at,
-                  'dddd, mmmm dS, yyyy, h:MM:ss TT'
-                )}
+        <div className="comments">
+          <h3>
+            Comments{' '}
+            <span className="comments-count">{this.state.comments.length}</span>
+          </h3>
+          {this.state.comments.map(comment => {
+            return (
+              <div className="comment" key={comment._id}>
+                <div>
+                  <div className="comment-name">
+                    <strong>{comment.created_by.name}</strong> commented on{' '}
+                    {dateFormat(
+                      comment.created_at,
+                      'dddd, mmmm dS, yyyy, h:MM:ss TT'
+                    )}
+                  </div>
+                  <div> {comment.body}</div>
+                </div>
+                <Votes id={comment._id} votes={comment.votes} type="comments" />
               </div>
-              <div> {comment.body}</div>
-              <Votes id={comment._id} votes={comment.votes} type="comments" />
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     );
   }

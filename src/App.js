@@ -8,6 +8,7 @@ import Article from './components/Article';
 import UserPage from './components/UserPage';
 import Login from './components/Login';
 import * as api from './api';
+import LoggedInUser from './components/LoggedInUser';
 
 class App extends Component {
   state = {
@@ -16,11 +17,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Home />
-        <Login login={this.login} user={this.state.user}>
+        <header>
+          <Home />
           <TopicNavBar />
+        </header>
+        <Login login={this.login} user={this.state.user}>
+          <LoggedInUser user={this.state.user} logout={this.logout} />
           <Router>
-            <Articles path="/" />
+            <Articles path="/" user={this.state.user} />
             <Articles path="/topics/:topic_slug" user={this.state.user} />
             <Article path="/articles/:articleId" user={this.state.user} />
             <UserPage path="/users/:username" />
@@ -35,6 +39,12 @@ class App extends Component {
       this.setState({
         user
       });
+    });
+  };
+
+  logout = () => {
+    this.setState({
+      user: {}
     });
   };
 }

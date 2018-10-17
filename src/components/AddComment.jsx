@@ -6,17 +6,19 @@ class AddComment extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          aria-label="comment body"
-          onChange={this.handleChange}
-          name="body"
-          value={this.state.body}
-          placeholder="Add Your Thoughts..."
-        />
-        <button>Post</button>
-      </form>
+      <div className="comment-add">
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            aria-label="comment body"
+            onChange={this.handleChange}
+            name="body"
+            value={this.state.body}
+            placeholder="Add Your Thoughts..."
+          />
+          <button>Submit Comment</button>
+        </form>
+      </div>
     );
   }
 

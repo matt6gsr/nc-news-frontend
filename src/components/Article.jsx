@@ -11,20 +11,23 @@ class Article extends Component {
   render() {
     if (!this.state.article.title) return <p>loading...</p>;
     return (
-      <div>
-        <h1>{this.state.article.title}</h1>
-        <div>
+      <div className="single-article">
+        <div className="single-article-content">
+          <h1>{this.state.article.title}</h1>
+
           <UserLink
             user={this.state.article.created_by}
             created_at={this.state.article.created_at}
           />
+
+          <p>{this.state.article.body}</p>
+
+          <Votes
+            id={this.state.article._id}
+            votes={this.state.article.votes}
+            type="articles"
+          />
         </div>
-        <p>{this.state.article.body}</p>
-        <Votes
-          id={this.state.article._id}
-          votes={this.state.article.votes}
-          type="articles"
-        />
         <Comments articleId={this.state.article._id} user={this.props.user} />
       </div>
     );

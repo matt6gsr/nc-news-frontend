@@ -8,7 +8,7 @@ class AddArticle extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="add-article">
         <p>Add An Article To This Topic</p>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="title_input">Title: </label>

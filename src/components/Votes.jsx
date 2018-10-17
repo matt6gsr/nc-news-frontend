@@ -7,22 +7,23 @@ class Votes extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="votes">
         <button
-          onClick={() => this.changeVoteMod('up')}
-          disabled={this.state.voteModifier === 1}
-        >
-          +
-        </button>
-        <p>
-          Rating:
-          {this.props.votes + this.state.voteModifier}
-        </p>
-        <button
+          className="button-down"
           onClick={() => this.changeVoteMod('down')}
           disabled={this.state.voteModifier === -1}
         >
           -
+        </button>
+        <span className="rating">
+          {this.props.votes + this.state.voteModifier}
+        </span>
+        <button
+          className="button-up"
+          onClick={() => this.changeVoteMod('up')}
+          disabled={this.state.voteModifier === 1}
+        >
+          +
         </button>
       </div>
     );

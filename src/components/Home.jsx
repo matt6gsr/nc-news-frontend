@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from '@reach/router';
+import northcodersLogo from '../images/northcodersN.png';
 
 const Home = () => {
   return (
-    <div>
+    <div className="logo">
       <Link to="/">
-        <h1>NC NEWS</h1>
+        <img src={northcodersLogo} alt="NC NEWS" />
       </Link>
     </div>
   );

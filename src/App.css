@@ -1,3 +1,226 @@
 .App {
   text-align: center;
 }
+
+.avatar {
+  height: 65px;
+  width: 65px;
+}
+
+.userPic {
+  height: 150px;
+  width: auto;
+}
+
+button {
+  background: transparent;
+  padding: 5px 15px;
+}
+input {
+  padding: 5px 15px;
+}
+
+a {
+  text-decoration: none;
+  color: #222;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+header {
+  background: #222;
+  position: relative;
+  color: #fff;
+}
+
+header .logo img {
+  height: 80px;
+  width: auto;
+}
+
+header nav div {
+  display: inline-block;
+}
+
+header nav div a {
+  color: #fff;
+  line-height: 80px;
+  display: block;
+  padding: 0 1em;
+}
+
+.user {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  color: #fff;
+}
+
+.user img {
+  border-radius: 200px;
+}
+
+.user span {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.user .logout {
+}
+
+.user button {
+  color: white;
+}
+
+.user-page {
+}
+
+.user-page .user-content {
+  background: #f5f5f5;
+  display: inline-block;
+  border: 1px solid #ccc;
+  margin: 1em auto;
+}
+
+.user-page h2,
+.user-page h3 {
+  color: #c50e2d;
+  padding: 1em;
+  margin: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.articles-header {
+  background: whitesmoke;
+  padding: 1em;
+}
+
+.articles {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(300px, auto);
+}
+
+@media only screen and (max-width: 979px) {
+  .articles {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .articles {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+  }
+}
+
+.articles .item {
+  margin: 1em;
+  border: 1px solid #ccc;
+  padding: 1em;
+}
+
+.articles .item:hover {
+  background: #c50e2d;
+  cursor: pointer;
+  color: #fff;
+}
+
+.articles .item:hover h2,
+.articles .item:hover a {
+  color: #fff;
+}
+
+.single-article {
+}
+
+.single-article-content {
+  background: #f5f5f5;
+  padding: 1em;
+}
+
+.single-article-content a:hover {
+  color: #c50e2d;
+}
+
+.votes {
+  margin: 1em 0;
+}
+
+.votes button {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  color: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.votes button.button-up {
+  background: url('images/up.png');
+}
+
+.votes button.button-down {
+  background: url('images/down.png');
+}
+
+.comments {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.comments-count {
+  background: #c50e2d;
+  color: #fff;
+  display: inline-block;
+  padding: 0 5px;
+  border-radius: 100px;
+  font-size: 1em;
+}
+
+.comment-add {
+  background: #c50e2d;
+  padding: 1em;
+}
+
+.comment-add button {
+  background: #ccc;
+}
+
+.comment {
+  background: #f5f5f5;
+  padding: 1em;
+  margin: 0 1em 2em;
+  border-radius: 1em;
+  position: relative;
+}
+
+.comment:after {
+  content: ' ';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #f5f5f5;
+  bottom: -8px;
+  left: 50%;
+  transform: rotate(45deg);
+}
+
+.comment-name {
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #222;
+  display: inline-block;
+}
+
+.comment-votes {
+  background: #fff;
+}

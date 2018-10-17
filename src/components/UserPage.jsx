@@ -7,16 +7,18 @@ class UserPage extends Component {
   };
   render() {
     return (
-      <div>
-        <p>
-          User Name:
-          {this.state.user.username}
-        </p>
-        <p>
-          Name:
-          {this.state.user.name}
-        </p>
-        <img src={this.state.user.avatar_url} alt="user avatar" />
+      <div className="user-page">
+        <div className="user-content">
+          <img
+            src={this.state.user.avatar_url}
+            alt="user avatar"
+            className="userPic"
+          />
+          <h2 className="user-username">
+            User Name: {this.state.user.username}
+          </h2>
+          <h3 className="user-name">Name: {this.state.user.name}</h3>
+        </div>
       </div>
     );
   }
