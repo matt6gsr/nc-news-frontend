@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import dateFormat from 'dateformat';
 import Votes from './Votes';
 import * as api from '../api';
 import AddComment from './AddComment';
@@ -18,6 +19,13 @@ class Comments extends Component {
         {this.state.comments.map(comment => {
           return (
             <div key={comment._id}>
+              <div>
+                {comment.created_by.name} commented on this article on{' '}
+                {dateFormat(
+                  comment.created_at,
+                  'dddd, mmmm dS, yyyy, h:MM:ss TT'
+                )}
+              </div>
               <div> {comment.body}</div>
               <Votes id={comment._id} votes={comment.votes} type="comments" />
             </div>

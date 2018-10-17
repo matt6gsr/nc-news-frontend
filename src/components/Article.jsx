@@ -14,7 +14,10 @@ class Article extends Component {
       <div>
         <h1>{this.state.article.title}</h1>
         <div>
-          <UserLink user={this.state.article.created_by} />
+          <UserLink
+            user={this.state.article.created_by}
+            created_at={this.state.article.created_at}
+          />
         </div>
         <p>{this.state.article.body}</p>
         <Votes
@@ -28,7 +31,6 @@ class Article extends Component {
   }
 
   componentDidMount() {
-    console.log('mounted....');
     this.getArticle(this.props.articleId);
   }
 

@@ -28,7 +28,6 @@ class Articles extends Component {
   }
 
   componentDidMount() {
-    console.log('mounting...');
     this.getArticles();
   }
 
@@ -41,7 +40,6 @@ class Articles extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log('updating...');
     console.log(this.props.topic_slug);
     if (prevProps.topic_slug !== this.props.topic_slug) {
       this.getArticles(this.props.topic_slug);

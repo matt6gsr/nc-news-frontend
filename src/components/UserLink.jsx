@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
+import dateFormat from 'dateformat';
 
 class UserLink extends Component {
   state = {
@@ -9,7 +10,8 @@ class UserLink extends Component {
     return (
       <div>
         <Link to={`/users/${this.props.user.username}`}>
-          Created by: {this.props.user.name}
+          Created by {this.props.user.name} on{' '}
+          {dateFormat(this.props.created_at, 'dddd, mmmm dS, yyyy, h:MM:ss TT')}
         </Link>
       </div>
     );
