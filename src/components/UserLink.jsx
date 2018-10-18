@@ -10,7 +10,7 @@ class UserLink extends Component {
     return (
       <div>
         <Link to={`/users/${this.props.user.username}`}>
-          Created by {this.props.user.name} on{' '}
+          created by {this.props.user.name} on{' '}
           {dateFormat(this.props.created_at, 'dddd, mmmm dS, yyyy, h:MM:ss TT')}
         </Link>
       </div>

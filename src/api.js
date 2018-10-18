@@ -47,3 +47,9 @@ export const postComment = (id, body, created_by) => {
     .post(`${API_URL}/articles/${id}/comments`, { body, created_by })
     .then(({ data }) => data.comment);
 };
+
+export const deleteComment = id => {
+  return axios
+    .delete(`${API_URL}/comments/${id}`)
+    .then(({ data }) => data.comment);
+};

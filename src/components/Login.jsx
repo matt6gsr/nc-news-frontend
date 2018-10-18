@@ -8,16 +8,16 @@ class Login extends Component {
     if (this.props.user.username) return this.props.children;
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="username">Please Login To View Content: </label>
+        <label htmlFor="username">please login to view content: </label>
         <input
           type="text"
           id="username"
           name="username"
-          placeholder="Username"
+          placeholder="username"
           onChange={this.handleChange}
           value={this.state.username}
         />
-        <button>Log In</button>
+        <button>log in</button>
       </form>
     );
   }

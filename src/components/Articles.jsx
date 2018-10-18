@@ -14,11 +14,12 @@ class Articles extends Component {
     return (
       <div>
         <div className="articles-header">
-          {this.props.topic_slug && <h2>Articles / {this.props.topic_slug}</h2>}
+          {this.props.topic_slug && <h2>articles / {this.props.topic_slug}</h2>}
           {this.props.topic_slug && (
             <AddArticle
               topic={this.props.topic_slug}
               userId={this.props.user._id}
+              addArticle={this.addArticle}
             />
           )}
         </div>
@@ -41,11 +42,11 @@ class Articles extends Component {
   }
 
   componentDidMount() {
-    this.getArticles();
+    this.getArticles(this.props.topic_slug);
   }
 
-  getArticles(url) {
-    api.getArticles(url).then(articles => {
+  getArticles(topic) {
+    api.getArticles(topic).then(articles => {
       this.setState({
         articles
       });
@@ -53,11 +54,19 @@ class Articles extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(this.props.topic_slug);
     if (prevProps.topic_slug !== this.props.topic_slug) {
       this.getArticles(this.props.topic_slug);
     }
   }
+
+  addArticle = (title, body) => {
+    const articleObj = { title, body, created_by: this.props.user._id };
+    api.postArticle(this.props.topic_slug, articleObj).then(article => {
+      this.setState({
+        articles: [article, ...this.state.articles]
+      });
+    });
+  };
 }
 
 export default Articles;

@@ -14,9 +14,9 @@ class AddComment extends Component {
             onChange={this.handleChange}
             name="body"
             value={this.state.body}
-            placeholder="Add Your Thoughts..."
+            placeholder="add your thoughts..."
           />
-          <button>Submit Comment</button>
+          <button>submit comment</button>
         </form>
       </div>
     );

@@ -13,7 +13,7 @@ class TopicNavBar extends Component {
           return (
             <div key={topic._id}>
               <TopicNavLink to={`/topics/${topic.slug}`}>
-                {topic.title}
+                {topic.slug}
               </TopicNavLink>
             </div>
           );

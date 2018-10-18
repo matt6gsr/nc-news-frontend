@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import * as api from '../api';
 
 class AddArticle extends Component {
   state = {
@@ -9,35 +8,37 @@ class AddArticle extends Component {
   render() {
     return (
       <div className="add-article">
-        <p>Add An Article To This Topic</p>
+        <p>add an article to this topic</p>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="title_input">Title: </label>
+          <label htmlFor="title_input">title: </label>
           <input
             type="text"
             name="title"
             id="title_input"
-            placeholder="Article Title"
+            placeholder="article title"
             onChange={this.handleChange}
           />
-          <label htmlFor="article_body">Article: </label>
+          <label htmlFor="article_body">article: </label>
           <input
             type="text"
             name="body"
             id="article_input"
-            placeholder="Write Your Article"
+            placeholder="write your article"
             onChange={this.handleChange}
           />
-          <button>Post Your Article</button>
+          <button>post your article</button>
         </form>
       </div>
     );
   }
 
   handleSubmit = event => {
-    const { userId, topic } = this.props;
-    const { title, body } = this.state;
     event.preventDefault();
-    api.postArticle(topic, { title, body, userId });
+    this.props.addArticle(this.state.title, this.state.body);
+    this.setState({
+      title: '',
+      body: ''
+    });
   };
 
   handleChange = event => {
