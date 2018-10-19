@@ -12,6 +12,11 @@
   width: auto;
 }
 
+.loading img {
+  height: 80px;
+  width: auto;
+}
+
 button {
   background: transparent;
   padding: 5px 15px;
@@ -183,10 +188,6 @@ header nav div a {
   font-size: 1em;
 }
 
-.no-comments {
-  padding-top: 5px;
-}
-
 .comment-add {
   background: #c50e2d;
   padding: 1em;
@@ -204,6 +205,15 @@ header nav div a {
   position: relative;
 }
 
+.no-comment {
+  background: #f5f5f5;
+  padding: 1em;
+  margin: 0 1em 2em;
+  border-radius: 1em;
+  position: relative;
+  line-height: 10px;
+}
+
 .comment:after {
   content: ' ';
   position: absolute;
@@ -213,6 +223,10 @@ header nav div a {
   bottom: -8px;
   left: 50%;
   transform: rotate(45deg);
+}
+
+.comment-name:hover a {
+  color: #c50e2d;
 }
 
 .comment-name {

@@ -23,7 +23,7 @@ class Comments extends Component {
               </span>
             </h3>
           ) : (
-            <span className="no-comments">
+            <span className="no-comment">
               be the first to comment on this article
             </span>
           )}
@@ -33,8 +33,9 @@ class Comments extends Component {
                 <div>
                   <div className="comment-name">
                     <Link to={`/users/${comment.created_by.username}`}>
-                      <strong>{comment.created_by.name}</strong> commented on{' '}
+                      <strong>{comment.created_by.name}</strong>{' '}
                     </Link>
+                    commented on{' '}
                     {dateFormat(
                       comment.created_at,
                       'dddd, mmmm dS, yyyy, h:MM:ss TT'

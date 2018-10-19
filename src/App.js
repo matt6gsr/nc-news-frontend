@@ -9,6 +9,8 @@ import UserPage from './components/UserPage';
 import Login from './components/Login';
 import * as api from './api';
 import LoggedInUser from './components/LoggedInUser';
+import NotFound from './components/NotFound';
+import BadRequest from './components/BadRequest';
 
 class App extends Component {
   state = {
@@ -28,6 +30,8 @@ class App extends Component {
             <Articles path="/topics/:topic_slug" user={this.state.user} />
             <Article path="/articles/:articleId" user={this.state.user} />
             <UserPage path="/users/:username" />
+            <NotFound default />
+            <BadRequest path="/error" />
           </Router>
         </Login>
       </div>

@@ -3,13 +3,22 @@ import * as api from '../api';
 import UserLink from './UserLink';
 import Comments from './Comments';
 import Votes from './Votes';
+import { navigate } from '@reach/router';
+import Loading from './Loading';
 
 class Article extends Component {
   state = {
-    article: {}
+    article: {},
+    err: null
   };
   render() {
-    if (!this.state.article.title) return <p>loading...</p>;
+    if (!this.state.article.title)
+      return (
+        <div>
+          <Loading />
+        </div>
+      );
+
     return (
       <div className="single-article">
         <div className="single-article-content">
@@ -38,12 +47,18 @@ class Article extends Component {
   }
 
   getArticle(articleId) {
-    api.getArticle(articleId).then(article => {
-      this.setState({
-        article
+    api
+      .getArticle(articleId)
+      .then(article => {
+        this.setState({
+          article
+        });
+      })
+      .catch(err => {
+        navigate('/error', { replace: true, state: { msg: err.message } });
       });
-    });
   }
+
   componentDidUpdate() {
     const id = this.props._id;
     if (id) {

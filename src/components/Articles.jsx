@@ -3,13 +3,21 @@ import { Link } from '@reach/router';
 import UserLink from './UserLink';
 import * as api from '../api';
 import AddArticle from './AddArticle';
+import { navigate } from '@reach/router';
+import Loading from './Loading';
 
 class Articles extends Component {
   state = {
-    articles: []
+    articles: [],
+    err: null
   };
   render() {
-    if (!this.state.articles.length) return <p>loading...</p>;
+    if (!this.state.articles.length)
+      return (
+        <div>
+          <Loading />
+        </div>
+      );
 
     return (
       <div>
@@ -46,11 +54,17 @@ class Articles extends Component {
   }
 
   getArticles(topic) {
-    api.getArticles(topic).then(articles => {
-      this.setState({
-        articles
+    api
+      .getArticles(topic)
+      .then(articles => {
+        this.setState({
+          articles
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        navigate('/error', { replace: true, state: { msg: err.message } });
       });
-    });
   }
 
   componentDidUpdate(prevProps) {
