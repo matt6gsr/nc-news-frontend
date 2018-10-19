@@ -6,6 +6,7 @@ const override = css`
   display: block;
   margin: 0 auto;
   border-color: red;
+  padding-top: 20px;
 `;
 
 class Loading extends React.Component {
