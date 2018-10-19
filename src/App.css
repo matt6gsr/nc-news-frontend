@@ -12,11 +12,6 @@
   width: auto;
 }
 
-.loading img {
-  height: 80px;
-  width: auto;
-}
-
 button {
   background: transparent;
   padding: 5px 15px;
@@ -72,14 +67,8 @@ header nav div a {
   margin-bottom: 10px;
 }
 
-.user .logout {
-}
-
 .user button {
   color: white;
-}
-
-.user-page {
 }
 
 .user-page .user-content {

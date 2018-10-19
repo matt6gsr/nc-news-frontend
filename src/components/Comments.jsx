@@ -74,6 +74,7 @@ class Comments extends Component {
     api
       .postComment(this.props.articleId, body, this.props.user._id)
       .then(comment => {
+        comment.created_by = { name: this.props.user.name };
         this.setState({
           comments: [comment, ...this.state.comments]
         });

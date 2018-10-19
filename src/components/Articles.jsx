@@ -62,7 +62,6 @@ class Articles extends Component {
         });
       })
       .catch(err => {
-        console.log(err);
         navigate('/error', { replace: true, state: { msg: err.message } });
       });
   }
@@ -76,6 +75,7 @@ class Articles extends Component {
   addArticle = (title, body) => {
     const articleObj = { title, body, created_by: this.props.user._id };
     api.postArticle(this.props.topic_slug, articleObj).then(article => {
+      article.created_by = { name: this.props.user.name };
       this.setState({
         articles: [article, ...this.state.articles]
       });

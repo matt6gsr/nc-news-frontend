@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import * as api from '../api';
+import Loading from './Loading';
+import { navigate } from '@reach/router';
 
 class UserPage extends Component {
   state = {
-    user: {}
+    user: {},
+    err: null
   };
   render() {
+    if (!this.state.user.username)
+      return (
+        <div>
+          <Loading />
+        </div>
+      );
+
     return (
       <div className="user-page">
         <div className="user-content">
@@ -29,11 +39,16 @@ class UserPage extends Component {
 
   getUser(props) {
     const { username } = this.props;
-    api.getUser(username).then(user => {
-      this.setState({
-        user
+    api
+      .getUser(username)
+      .then(user => {
+        this.setState({
+          user
+        });
+      })
+      .catch(err => {
+        navigate('/error', { replace: true, state: { msg: err.message } });
       });
-    });
   }
 }
 
