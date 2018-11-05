@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Logout extends Component {
   render() {
@@ -9,5 +10,9 @@ class Logout extends Component {
     );
   }
 }
+
+Logout.propTypes = {
+  logout: PropTypes.func.isRequired
+};
 
 export default Logout;

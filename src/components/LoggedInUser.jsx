@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Logout from './Logout';
 import { Link } from '@reach/router';
+import PropTypes from 'prop-types';
 
 class LoggedInUser extends Component {
   render() {
@@ -19,5 +20,10 @@ class LoggedInUser extends Component {
     );
   }
 }
+
+LoggedInUser.propTypes = {
+  logout: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired
+};
 
 export default LoggedInUser;

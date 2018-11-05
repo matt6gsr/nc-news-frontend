@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddArticle extends Component {
   state = {
@@ -48,5 +49,11 @@ class AddArticle extends Component {
     });
   };
 }
+
+AddArticle.propTypes = {
+  addArticle: PropTypes.func.isRequired,
+  topic: PropTypes.string.isRequired,
+  userId: PropTypes.string.isRequired
+};
 
 export default AddArticle;

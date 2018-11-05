@@ -5,11 +5,11 @@ import Comments from './Comments';
 import Votes from './Votes';
 import { navigate } from '@reach/router';
 import Loading from './Loading';
+import PropTypes from 'prop-types';
 
 class Article extends Component {
   state = {
-    article: {},
-    err: null
+    article: {}
   };
   render() {
     if (!this.state.article.title)
@@ -58,13 +58,10 @@ class Article extends Component {
         navigate('/error', { replace: true, state: { msg: err.message } });
       });
   }
-
-  componentDidUpdate() {
-    const id = this.props._id;
-    if (id) {
-      this.getArticle(id);
-    }
-  }
 }
+
+Article.propTypes = {
+  user: PropTypes.object.isRequired
+};
 
 export default Article;

@@ -1,36 +1,69 @@
-# nc-news
+## NORTHCODERS NEWS FRONTEND PROJECT
 
 Front-End project for Northcoders News
 
-Northcoders News
-Northcoders News is a social news aggregation, web content rating, and discussion website. Think something along the lines of Reddit.
+Northcoders News is a reddit style website built in ReactJS featuring numerous articles accross several topics. The user has the ability to view articles, up-vote or down-vote an article and create a new article, aswell as commenting on existing articles or up-vote/down-vote comments. To view the deployed version in your browser, please visit the link below:
 
-Northcoders News has articles which are divided into topics. Each article has user curated ratings and can be up or down voted using the API. Users can also add comments about an article. Comments can also be up or down voted. A user can add comments and remove any comments which they have added.
+[Northcoders News](https://matt6gsr-ncnews.netlify.com)
 
-This review sprint should consolidate your understanding of making a C.R.U.D application from a front end perspective.
+There are serveral users to log in with:
 
-Objectives
-Pull together all the front-end skills, technologies and best practises you have learnt over the past three weeks.
-Make asynchronous API calls to your own server.
-Use HTTP request types to interact with your backend, and HTTP response codes to update your UI accordingly.
-What to do
-Use the generic react-project-checklist as a guide to setting up your app. Here are some project-specific things to bear in mind:
+```
+tickle122
+grumpy19
+happyamy2016
+cooljmessy
+weegembump
+jessjelly
+```
 
-Have a look at your API endpoints and at Reddit. Think about what data you have available, and how you will structure your application. What routes will your application have? What articles will you choose to display on the main page?
+Please note: No password is required to log in.
 
-Think how you will isolate the concerns of your project - the structure of your components, the sourcing of your data, the styling.
+## Getting Started
 
-What sort of routing does Reddit use? What sort of specificity do you think you will need? Remember, your urls don't have to directly correspond to your api endpoints, but they will provide some guidance.
+To explore this project locally, clone the reop address and using the terminal window run the command:
 
-Think about what data each component will need. Where will it come from? When should components find their own data and when should they load it themselves? Focus on loading a list of articles for your front page first of all.
+```
+git clone https://github.com/matt6gsr/nc-news-frontend.git
+```
 
-Consider more complex functionality: how do you want to allow changes to your database? Think about how you will attribute users to posted comments etc. How will you know what comments/articles a user should be allowed to delete? How about sorting data, or paginating responses? A good starting point would be to pick a single user and assuming that all new articles and comments are being posted by that user.
+Node.js is required to run the development instance. To check node is installed on your machine, in the terminal run the command:
 
-How are you going to make this a fluid and engaging experience for users, so they want to come back for more?
+```
+node -v
+```
 
-Extra credit
-Create a route which shows which users have been most active adding articles and comments
-Make this route sort the users by how popular they are based on an aggregation of their article and comment vote counts
-Implement a filter which re-orders comments based on either the time they were added, or how many votes they have got.
-Important
-This sprint is among the ones we'll ask you to complete in order to put you forward for jobs. Put a little bit of love into it! :)
+If Node.js is not installed on your machine, please visit the link below for installation instructions
+
+[Node.js](https://nodejs.org/en/download/)
+
+CD into this repo/folder:
+
+```
+cd nc-news-frontend
+```
+
+To install the required dependencies, run the command:
+
+```
+npm install
+```
+
+To start a ReactJS instance locally, please run the command:
+
+```
+npm run start
+```
+
+This will start the app running on localhost, port 3000.
+
+## Links
+
+- [Node](https://nodejs.org/en/)
+- [npm](https://www.npmjs.com/)
+- [ReactJS](https://reactjs.org/)
+- [@reach/router](https://reach.tech/router)
+
+## Acknowledgments
+
+Author: Matt Hamilton

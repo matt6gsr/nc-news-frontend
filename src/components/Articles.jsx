@@ -5,11 +5,11 @@ import * as api from '../api';
 import AddArticle from './AddArticle';
 import { navigate } from '@reach/router';
 import Loading from './Loading';
+import PropTypes from 'prop-types';
 
 class Articles extends Component {
   state = {
-    articles: [],
-    err: null
+    articles: []
   };
   render() {
     if (!this.state.articles.length)
@@ -39,8 +39,16 @@ class Articles extends Component {
                 <Link to={`/articles/${article._id}`}>
                   <h2>{article.title}</h2>
                 </Link>
-                <div>Topic: {article.belongs_to}</div>
-                <UserLink user={article.created_by} />
+                <Link to={`/topics/${article.belongs_to}`}>
+                  <div>
+                    Topic: <strong>{article.belongs_to}</strong>
+                  </div>
+                </Link>
+
+                <UserLink
+                  user={article.created_by}
+                  created_at={article.created_at}
+                />
               </div>
             );
           })}
@@ -75,12 +83,16 @@ class Articles extends Component {
   addArticle = (title, body) => {
     const articleObj = { title, body, created_by: this.props.user._id };
     api.postArticle(this.props.topic_slug, articleObj).then(article => {
-      article.created_by = { name: this.props.user.name };
+      article.created_by = { ...this.props.user };
       this.setState({
         articles: [article, ...this.state.articles]
       });
     });
   };
 }
+
+Articles.propTypes = {
+  user: PropTypes.object.isRequired
+};
 
 export default Articles;
